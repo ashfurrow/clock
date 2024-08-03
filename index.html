@@ -18,6 +18,18 @@
         text-align: center;
       }
     </style>
+    <script type="text/javascript">
+      function updateClock() {
+        let now = new Date()
+        let time = now.toLocaleTimeString('en-CA', {hour: "numeric", minute: "2-digit", hour12: true}).replace(" AM", "").replace(" PM", "")
+
+        document.getElementById('clock').innerHTML = time
+      }
+      window.onload = function() {
+        updateClock()
+        setInterval(updateClock, 1000) // TODO: Update this to 5000 maybe?
+      }
+    </script>
   </head>
   <body>
     <div id="clock">
