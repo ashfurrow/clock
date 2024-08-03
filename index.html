@@ -1,8 +1,50 @@
 <html>
   <head>
     <title>Clock</title>
+    <style>
+      body {
+        font-family: Helvetica;
+        font-size: 350px;
+        position: relative;
+      }
+      #clock {
+        transform: rotate(-90deg);
+        transform-origin: "bottom right";
+        -webkit-transform: rotate(-90deg);
+        -webkit-transform-origin: "top left";
+        position: absolute;
+        top: 0; 
+        bottom: 0;
+        left: -80px;
+        right: 0;
+        margin: auto;
+        height: 350px;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    Clock goes here
+    <div id="clock">
+      Clock
+    </div>
+    <script type="text/javascript">
+      function updateClock() {
+        var now = new Date();
+        // JavaScript date formatting sucks so we'll do like this we're still in high school.
+        var hours = now.getHours();
+        if (hours > 12) {
+          hours -= 12;
+        }
+        var minutes = now.getMinutes() + '';
+        if (minutes.length < 2) {
+          minutes = '0' + minutes;
+        }
+        var time = hours + ':' + minutes
+
+        document.getElementById('clock').innerHTML = time;
+      }
+      updateClock();
+      setInterval(updateClock, 1000); // TODO: Update this to 5000 maybe?
+    </script>
   </body>
 </html>
